@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<style>
+  :root { color-scheme: dark; }
+  body {
+    margin: 0; width: 280px;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: #14181F; color: #E6EAF0;
+  }
+  .hd { display: flex; align-items: center; gap: 9px; padding: 14px 14px 10px; }
+  .glyph { width: 20px; height: 20px; border-radius: 6px;
+    background:
+      radial-gradient(circle at 30% 70%, #F5A623 0 4px, transparent 4.5px),
+      radial-gradient(circle at 70% 70%, #2DD4BF 0 4px, transparent 4.5px),
+      #10141B;
+    border: 1px solid #2C3442; }
+  .title { font-size: 14px; font-weight: 700; letter-spacing: .01em; }
+  .sub { padding: 0 14px 12px; font-size: 11.5px; color: #8A94A6; line-height: 1.5; }
+  .sec { padding: 12px 14px; border-top: 1px solid #232A36; }
+  .row { display: flex; align-items: center; gap: 8px; }
+  .row + .row { margin-top: 10px; }
+  label { font-size: 12px; color: #C6CEDA; }
+  .grow { flex: 1; }
+  button, input {
+    font-family: inherit; border: 1px solid #2C3442; border-radius: 7px;
+    background: #1A1F29; color: #E6EAF0; cursor: pointer; font-size: 12px;
+  }
+  button { padding: 6px 11px; }
+  button:hover { background: #232A36; }
+  button.on { background: #123524; border-color: #1E5137; color: #7BF3B0; }
+  input { width: 66px; padding: 5px 7px; cursor: text;
+    font-family: ui-monospace, Menlo, monospace; background: #10141B; }
+  .keys { font-size: 11px; color: #8A94A6; line-height: 1.9; }
+  .keys kbd { font-family: ui-monospace, monospace; background: #10141B;
+    border: 1px solid #2C3442; border-radius: 4px; padding: 0 5px; color: #C6CEDA; }
+  .note { font-size: 10.5px; color: #6B7688; line-height: 1.55; }
+  a { color: #6FA8FF; text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="hd"><span class="glyph"></span><span class="title">Frame Loop</span></div>
+  <div class="sub">Frame-accurate A–B looping for any HTML5 video. The control panel appears over videos on the page.</div>
+
+  <div class="sec">
+    <div class="row">
+      <label class="grow">Control panel</label>
+      <button id="toggle">Hide</button>
+    </div>
+    <div class="row">
+      <label class="grow">Frame rate</label>
+      <input id="fps" type="number" step="0.001" min="1" max="240" placeholder="auto" />
+      <button id="auto" class="on">Auto</button>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="keys">
+      <kbd>[</kbd> set A &nbsp;&nbsp; <kbd>]</kbd> set B<br />
+      <kbd>\</kbd> toggle loop<br />
+      <kbd>,</kbd> / <kbd>.</kbd> step one frame
+    </div>
+  </div>
+
+  <div class="sec note">
+    Works on most sites. Streamed videos may pause briefly when the
+    loop jumps back while a segment buffers. If a site loads the player very
+    early, reload the page once so Frame Loop can reach the video.
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
